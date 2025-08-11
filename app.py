@@ -120,8 +120,6 @@ class AppDemo(QMainWindow):
     def file_open(self):
         path, _ = QFileDialog.getOpenFileName(
             parent=self,
-            caption='Open file',
-            directory='',
             filter=self.filterTypes
         )
 
