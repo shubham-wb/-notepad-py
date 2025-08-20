@@ -10,17 +10,12 @@ class AppDemo(QMainWindow):
         super().__init__()
         self.setWindowIcon(QIcon('./icons/notepad.ico'))
         self.screen_width, self.screen_height = self.geometry().width(), self.geometry().height()
-        self.resize(self.screen_width * 2, self.screen_height * 2) 
-
+        self.resize(self.screen_width * 2, self.screen_height * 2)
         self.filterTypes = 'Text Document (*.txt);; Python (*.py);; Markdown (*.md)'
-
         self.path = None
-
         fixedFont = QFontDatabase.systemFont(QFontDatabase.SystemFont.FixedFont)
         fixedFont.setPointSize(12)
-
         mainLayout = QVBoxLayout()
-
         # editor
         self.editor = QPlainTextEdit()
         self.editor.setFont(fixedFont)
@@ -65,7 +60,6 @@ class AppDemo(QMainWindow):
         #----------------------------------
         edit_menu = self.menuBar().addMenu('&Edit')
 
-
         # Undo, Redo Actions
         undo_action = self.create_action(self, './icons/undo.ico', 'Undo', 'Undo', self.editor.undo)
         undo_action.setShortcut(QKeySequence.StandardKey.Undo)
@@ -97,18 +91,12 @@ class AppDemo(QMainWindow):
         select_all_action.setShortcut(QKeySequence.StandardKey.SelectAll)
 
         edit_menu.addActions([cut_action, copy_action, paste_action, select_all_action])
-      
-      
         # add separator
         edit_menu.addSeparator()
-      
-      
         # wrap text
         wrap_text_action = self.create_action(self, './icons/wrap_text.ico', 'Wrap Text', 'Wrap text', self.toggle_wrap_text)
         wrap_text_action.setShortcut('Ctrl+Shift+W')
         edit_menu.addAction(wrap_text_action)
-        
-
         self.update_title()
 
     def toggle_wrap_text(self):
@@ -189,8 +177,6 @@ class AppDemo(QMainWindow):
         action.setStatusTip(set_status_tip)
         action.triggered.connect(triggered_method)
         return action
-
-
 
 app = QApplication(sys.argv)
 notepad = AppDemo()
